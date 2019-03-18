@@ -4,25 +4,28 @@
 #
 Name     : R-systemfit
 Version  : 1.1.22
-Release  : 17
+Release  : 18
 URL      : https://cran.r-project.org/src/contrib/systemfit_1.1-22.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/systemfit_1.1-22.tar.gz
 Summary  : Estimating Systems of Simultaneous Equations
 Group    : Development/Tools
 License  : GPL-2.0+
-Requires: R-Ecdat
-Requires: R-car
-Requires: R-lmtest
-Requires: R-plm
-Requires: R-sandwich
-Requires: R-sem
-BuildRequires : R-Ecdat
+BuildRequires : R-Rcpp
+BuildRequires : R-abind
 BuildRequires : R-car
+BuildRequires : R-carData
+BuildRequires : R-cellranger
+BuildRequires : R-forcats
+BuildRequires : R-hms
 BuildRequires : R-lmtest
-BuildRequires : R-plm
+BuildRequires : R-pillar
+BuildRequires : R-pkgconfig
+BuildRequires : R-rio
+BuildRequires : R-rlang
 BuildRequires : R-sandwich
-BuildRequires : R-sem
-BuildRequires : clr-R-helpers
+BuildRequires : R-zip
+BuildRequires : R-zoo
+BuildRequires : buildreq-R
 
 %description
 systems of linear and nonlinear equations using Ordinary Least
@@ -38,11 +41,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522850482
+export SOURCE_DATE_EPOCH=1552935765
 
 %install
+export SOURCE_DATE_EPOCH=1552935765
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1522850482
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -71,15 +74,6 @@ echo "CXXFLAGS = $CXXFLAGS -ftree-vectorize " >> ~/.R/Makevars
 R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library systemfit
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
-%check
-export LANG=C
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library systemfit|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
-
 
 %files
 %defattr(-,root,root,-)
@@ -115,3 +109,23 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/systemfit/help/systemfit.rdx
 /usr/lib64/R/library/systemfit/html/00Index.html
 /usr/lib64/R/library/systemfit/html/R.css
+/usr/lib64/R/library/systemfit/tests/KleinI.R
+/usr/lib64/R/library/systemfit/tests/KleinI.Rout.save
+/usr/lib64/R/library/systemfit/tests/KleinI_noMat.R
+/usr/lib64/R/library/systemfit/tests/KleinI_noMat.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_2sls.R
+/usr/lib64/R/library/systemfit/tests/test_2sls.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_3sls.R
+/usr/lib64/R/library/systemfit/tests/test_3sls.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_hausman.R
+/usr/lib64/R/library/systemfit/tests/test_hausman.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_ols.R
+/usr/lib64/R/library/systemfit/tests/test_ols.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_panel.R
+/usr/lib64/R/library/systemfit/tests/test_panel.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_sur.R
+/usr/lib64/R/library/systemfit/tests/test_sur.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_w2sls.R
+/usr/lib64/R/library/systemfit/tests/test_w2sls.Rout.save
+/usr/lib64/R/library/systemfit/tests/test_wls.R
+/usr/lib64/R/library/systemfit/tests/test_wls.Rout.save
