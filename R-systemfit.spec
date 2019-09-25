@@ -4,26 +4,19 @@
 #
 Name     : R-systemfit
 Version  : 1.1.22
-Release  : 22
+Release  : 23
 URL      : https://cran.r-project.org/src/contrib/systemfit_1.1-22.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/systemfit_1.1-22.tar.gz
 Summary  : Estimating Systems of Simultaneous Equations
 Group    : Development/Tools
 License  : GPL-2.0+
-BuildRequires : R-Rcpp
-BuildRequires : R-abind
+Requires: R-car
+Requires: R-lmtest
+Requires: R-sandwich
 BuildRequires : R-car
 BuildRequires : R-carData
-BuildRequires : R-cellranger
-BuildRequires : R-forcats
-BuildRequires : R-hms
 BuildRequires : R-lmtest
-BuildRequires : R-pillar
-BuildRequires : R-pkgconfig
-BuildRequires : R-rio
-BuildRequires : R-rlang
 BuildRequires : R-sandwich
-BuildRequires : R-zip
 BuildRequires : R-zoo
 BuildRequires : buildreq-R
 
@@ -40,13 +33,13 @@ systems of linear and nonlinear equations using Ordinary Least
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552935765
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569385817
 
 %install
-export SOURCE_DATE_EPOCH=1552935765
+export SOURCE_DATE_EPOCH=1569385817
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
