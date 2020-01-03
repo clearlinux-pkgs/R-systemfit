@@ -4,7 +4,7 @@
 #
 Name     : R-systemfit
 Version  : 1.1.24
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/systemfit_1.1-24.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/systemfit_1.1-24.tar.gz
 Summary  : Estimating Systems of Simultaneous Equations
